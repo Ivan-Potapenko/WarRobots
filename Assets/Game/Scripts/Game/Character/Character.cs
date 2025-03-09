@@ -39,10 +39,15 @@ namespace Game {
             foreach (var logic in _logic) {
                 logic.Init(this);
             }
+            _health.onDeath += OnDeath;
+        }
+
+        private void OnDeath() {
+            gameObject.SetActive(false);
         }
 
         public void UpdateLogics() {
-            if (!gameObject.activeSelf) {
+            if (!gameObject.activeSelf || Health.CurrentState == Health.State.Death) {
                 return;
             }
             foreach (var logic in _logic) {

@@ -24,6 +24,7 @@ namespace Game {
 
         public event Action<Damage> onDamage;
         public event Action onDeath;
+        public event Action onValueChanged;
 
         public void DoDamage(Damage damage) {
             if(damage.value < 0) {
@@ -31,7 +32,8 @@ namespace Game {
             }
             _value = Mathf.Max(0, _value - damage.value);
             onDamage?.Invoke(damage);
-            if(_value == 0) {
+            onValueChanged?.Invoke();
+            if (_value == 0) {
                 _currentState = State.Death;
                 onDeath?.Invoke();
             }
