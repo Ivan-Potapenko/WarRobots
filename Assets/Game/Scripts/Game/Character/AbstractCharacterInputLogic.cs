@@ -7,6 +7,7 @@ namespace Game {
         public struct CharacterInputData {
             public Vector2 moveVector;
             public Vector2 aimingVector;
+            public bool shoot;
         }
 
         protected CharacterInputData _inputData;

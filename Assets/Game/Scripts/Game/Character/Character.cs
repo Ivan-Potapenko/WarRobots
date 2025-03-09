@@ -5,8 +5,11 @@ namespace Game {
     public class Character : MonoBehaviour {
 
         [SerializeField]
-        private AbstractCharacterInputLogic _inputLogic;
-        public AbstractCharacterInputLogic InputLogic => _inputLogic;
+        private AbstractCharacterInputLogic _botInputLogic;
+
+        [SerializeField]
+        private AbstractCharacterInputLogic _playerInputLogic;
+        public AbstractCharacterInputLogic InputLogic => IsBot ? _botInputLogic : _playerInputLogic;
 
         [SerializeField]
         private CharacterMoveLogic _moveLogic;
@@ -24,16 +27,21 @@ namespace Game {
         private Animator _characterAnimator;
         public Animator CharacterAnimator => _characterAnimator;
 
+        [SerializeField]
+        private bool _isBot;
+        public bool IsBot => _isBot;
+
         private AbstractCharacterLogic[] _logic;
 
-        public void Start() {
+        public void Init(bool isBot) {
+            _isBot = isBot;
             _logic = GetComponents<AbstractCharacterLogic>();
             foreach (var logic in _logic) {
                 logic.Init(this);
             }
         }
 
-        public void Update() {
+        public void UpdateLogics() {
             if (!gameObject.activeSelf) {
                 return;
             }

@@ -1,18 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game {
 
-    public class AbstractWeapon : MonoBehaviour {
-        // Start is called before the first frame update
-        void Start() {
+    public abstract class AbstractWeapon : MonoBehaviour {
 
+        [SerializeField]
+        private float _timeBetweenShoot;
+
+        [SerializeField]
+        private MuzzleFlash _muzzleFlash;
+
+        [SerializeField]
+        private Transform _shootPoint;
+        public Transform ShootPoint => _shootPoint;
+
+        private float _currenTimeBeforeShoot;
+
+        public void Shoot() {
+            if (_currenTimeBeforeShoot > 0) {
+                return;
+            }
+            _muzzleFlash.Play();
+            ShootInternal();
+            _currenTimeBeforeShoot = _timeBetweenShoot;
         }
 
-        // Update is called once per frame
-        void Update() {
+        protected abstract void ShootInternal();
 
+        public virtual void UpdateWeapon() {
+            if (_currenTimeBeforeShoot > 0) {
+                _currenTimeBeforeShoot -= Time.deltaTime;
+            }
         }
     }
 }

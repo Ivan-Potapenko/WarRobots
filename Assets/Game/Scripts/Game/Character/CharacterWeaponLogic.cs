@@ -19,6 +19,10 @@ namespace Game {
             //var direction = Vector3.RotateTowards(_abstractWeapon.transform.forward, Character.InputLogic.InputData.aimingVector, _aimSpeed * Time.deltaTime, 0.0f);
             var newRotationQuaternion = Quaternion.AngleAxis(-aimAngle - 90, Vector3.up);
             _abstractWeapon.transform.rotation = Quaternion.Lerp(_abstractWeapon.transform.rotation, newRotationQuaternion, _aimSpeed * Time.deltaTime);//Quaternion.LookRotation(Character.InputLogic.InputData.aimingVector);
+            _abstractWeapon.UpdateWeapon();
+            if(Character.InputLogic.InputData.shoot) {
+                _abstractWeapon.Shoot();
+            }
         }
     }
 }

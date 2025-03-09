@@ -3,8 +3,6 @@ using UnityEngine;
 namespace Game {
 
     public class GameCameraController : MonoBehaviour {
-        [SerializeField]
-        private GameObject _player;
 
         [SerializeField]
         private float _smooth;
@@ -17,16 +15,22 @@ namespace Game {
         [SerializeField]
         private float _startYPosition;
 
-        void Update() {
+        private Character _character;
+
+        public void Init(Character character) {
+            _character = character;
+        }
+
+        public void UpdateCamera() {
             UpdateCameraPosition();
         }
 
         private void UpdateCameraPosition() {
-            if (_player == null) {
+            if (_character == null) {
                 return;
             }
 
-            var newPosition = Vector3.SmoothDamp(transform.position, _player.gameObject.transform.position + _cameraPlayerPositionDifference, ref _velocity, _smooth);
+            var newPosition = Vector3.SmoothDamp(transform.position, _character.gameObject.transform.position + _cameraPlayerPositionDifference, ref _velocity, _smooth);
             newPosition.y = _startYPosition;
             transform.position = newPosition;
         }
