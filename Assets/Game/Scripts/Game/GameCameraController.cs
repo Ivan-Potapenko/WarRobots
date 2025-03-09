@@ -19,6 +19,7 @@ namespace Game {
 
         public void Init(Character character) {
             _character = character;
+            transform.position = _character.gameObject.transform.position + _cameraPlayerPositionDifference;
         }
 
         public void UpdateCamera() {
