@@ -1,14 +1,18 @@
 using UnityEngine;
 
-namespace Game {
+namespace Game
+{
 
-    public class ProjectileWeapon : AbstractWeapon {
+    public class ProjectileWeapon : AbstractWeapon
+    {
 
         [SerializeField]
         private AbstractProjectile _abstractProjectilePrefab;// —юда префаб пули
-
-        protected override void ShootInternal() {
+        
+        protected override void ShootInternal()
+        {
             // “ут создаЄм пулю в точке ShootPoint
+            Instantiate(_abstractProjectilePrefab, ShootPoint.transform.position, ShootPoint.rotation);
         }
     }
 }

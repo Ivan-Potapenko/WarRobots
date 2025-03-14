@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1442e9202fa21c942abdfb9b334ee36d, type: 3}
-  m_Name: WeaponsConfig
+  m_Script: {fileID: 11500000, guid: 7792c6fcf12b6f3419d168e1df62b500, type: 3}
+  m_Name: RailgunWeaponData
   m_EditorClassIdentifier: 
-  _weaponsData:
-  - {fileID: 11400000, guid: f46bac886b635e04892f277e7981b522, type: 2}
+  _weaponPrefab: {fileID: 277937020699144420, guid: 2a2f678cb7cd3dc49857c0b9a05f087e,
+    type: 3}
