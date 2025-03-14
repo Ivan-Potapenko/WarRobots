@@ -1,3 +1,4 @@
+using Data;
 using UnityEngine;
 
 namespace Game {
@@ -20,6 +21,10 @@ namespace Game {
         public CharacterController CharacterController => _characterController;
 
         [SerializeField]
+        private CharacterWeaponLogic _weaponLogic;
+        public CharacterWeaponLogic WeaponLogic => _weaponLogic;
+
+        [SerializeField]
         private Health _health;
         public Health Health => _health;
 
@@ -39,6 +44,7 @@ namespace Game {
             foreach (var logic in _logic) {
                 logic.Init(this);
             }
+            _health.Init();
             _health.onDeath += OnDeath;
         }
 
@@ -53,6 +59,7 @@ namespace Game {
             foreach (var logic in _logic) {
                 logic.UpdateLogic();
             }
+            _health.UpdateHealth();
         }
     }
 }

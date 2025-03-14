@@ -16,6 +16,13 @@ namespace Game {
 
         private float _currenTimeBeforeShoot;
 
+        private Character _owner;
+        public Character Owner => _owner;
+
+        public void Init(Character owner) {
+            _owner = owner;
+        }
+
         public void Shoot() {
             if (_currenTimeBeforeShoot > 0) {
                 return;

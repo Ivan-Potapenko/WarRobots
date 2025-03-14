@@ -13,7 +13,6 @@ namespace Game {
             _inputData.moveVector.y = Input.GetAxisRaw("Vertical");
             _inputData.aimingVector = Camera.main.WorldToScreenPoint(transform.position) - Input.mousePosition;
             _inputData.shoot = Input.GetMouseButton(0);
-            Debug.Log($"AimingVector: {_inputData.aimingVector}");
         }
     }
 }

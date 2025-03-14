@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game;
 using UnityEngine;
 
-public class WeaponData : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+namespace Data {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    [CreateAssetMenu(fileName = nameof(WeaponData), menuName = "Data/Game/WeaponData")]
+    public class WeaponData : ScriptableObject {
+
+        [SerializeField]
+        private AbstractWeapon _weaponPrefab;
+        public AbstractWeapon WeaponPrefab => _weaponPrefab;
     }
 }

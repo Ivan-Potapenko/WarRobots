@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileWeapon : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+namespace Game {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public class ProjectileWeapon : AbstractWeapon {
+
+        [SerializeField]
+        private AbstractProjectile _abstractProjectilePrefab;// —юда префаб пули
+
+        protected override void ShootInternal() {
+            // “ут создаЄм пулю в точке ShootPoint
+        }
     }
 }

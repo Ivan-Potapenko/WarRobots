@@ -9,7 +9,7 @@ namespace Game {
         private ParticleSystem _bulletEffect;
 
         [SerializeField]
-        private Collider _shootCollider;
+        private WeaponCone _weaponCone;
 
         [SerializeField]
         private LayerMask _raycastLayerMask;
@@ -18,7 +18,13 @@ namespace Game {
         private float _raycastDistance;
 
         [SerializeField]
-        private Health.Damage _damage;
+        private float _damage;
+
+        [SerializeField]
+        private AnimationCurve _damageCurve;
+
+        //[SerializeField]
+        //private float _angleToDamage;
 
         private List<Character> _entitiesToShoot = new List<Character>();
 
@@ -26,15 +32,22 @@ namespace Game {
             _entitiesToShoot.Clear();
             _bulletEffect.transform.rotation = ShootPoint.rotation;
             foreach (var entity in BattleManager.instance.Characters) {
-                if (IsColliding(_shootCollider, entity.CharacterController)) {
+                if(entity == Owner) {
+                    continue;
+                }
+                if (_weaponCone.IsPointInTrapezoid(entity.transform.position)) {
                     _entitiesToShoot.Add(entity);
                 }
             }
             foreach (var entity in _entitiesToShoot) {
+                var vectorToEnemy = entity.CharacterController.bounds.center - ShootPoint.transform.position;
+                var vectorToCheckAngle = vectorToEnemy;
+                vectorToCheckAngle.y = 0;
                 if (Physics.Raycast(ShootPoint.transform.position, entity.CharacterController.bounds.center - ShootPoint.transform.position, out var hitInfo, _raycastDistance, _raycastLayerMask)) {
                     if (hitInfo.collider.gameObject == entity.gameObject) {
-                        _bulletEffect.transform.LookAt(entity.CharacterController.bounds.center);
-                        entity.Health.DoDamage(_damage);
+                        entity.Health.DoDamage(new Health.Damage() {
+                            value = Mathf.CeilToInt(_damage * _damageCurve.Evaluate(Mathf.Min(1, Mathf.Max(0, vectorToCheckAngle.magnitude / (float)_raycastDistance)))),
+                        });
                     }
                 }
             }
