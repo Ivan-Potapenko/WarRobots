@@ -54,6 +54,7 @@ MonoBehaviour:
   _destroyEffect: {fileID: 1828176872806910, guid: 24c44ee4796fb724498efbc3842b8342,
     type: 3}
   homingStrength: 10
+  _lifetime: 2
 --- !u!65 &8501457381227229739
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -175,7 +176,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5126591
+        value: 0.36075783
         inSlope: 0
         outSlope: 0
         tangentMode: 0
