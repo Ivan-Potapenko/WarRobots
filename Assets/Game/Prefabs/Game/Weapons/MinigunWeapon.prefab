@@ -4990,6 +4990,7 @@ MonoBehaviour:
   _timeBetweenShoot: 0.1
   _muzzleFlash: {fileID: 3349624604774992904}
   _shootPoint: {fileID: 145522530034019047}
+  _aiShootDistance: 20
   _bulletEffect: {fileID: 6844172319468603183}
   _weaponCone: {fileID: 2764287552658922591}
   _raycastLayerMask:

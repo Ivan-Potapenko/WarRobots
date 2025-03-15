@@ -16,21 +16,24 @@ namespace Game
 
         public int Damage => _damage;
         public int Speed => _speed;
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.TryGetComponent<Health>(out var health))
-            {
+        private void OnCollisionEnter(Collision collision) {
+            if (collision.gameObject.TryGetComponent<Health>(out var health)) {
                 health.DoDamage(new Health.Damage() { value = _damage });
             }
+            Destroy();
+        }
+
+        private void Destroy() {
             Instantiate(_destroyEffect, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
+
         public void DestructionThroughTime()
         {
             _lifetime -= Time.deltaTime;
             if (_lifetime < 0)
             {
-                Destroy(gameObject);
+                Destroy();
             }
         }
     }

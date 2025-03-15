@@ -31,9 +31,17 @@ namespace Game {
                 return;
             }
 
-            var newPosition = Vector3.SmoothDamp(transform.position, _character.gameObject.transform.position + _cameraPlayerPositionDifference, ref _velocity, _smooth);
-            newPosition.y = _startYPosition;
+            var newPosition = Vector3.SmoothDamp(transform.position, _character.gameObject.transform.position + _cameraPlayerPositionDifference + Vector3.up * GetWeaponHightModifier(), ref _velocity, _smooth);
+            //newPosition.y = _startYPosition;
             transform.position = newPosition;
+        }
+
+        private float GetWeaponHightModifier() {
+            var weapon = _character.WeaponLogic.Weapon;
+            if (weapon == null) {
+                return 0;
+            }
+            return _cameraPlayerPositionDifference.y * weapon.CameraHightModifier - _cameraPlayerPositionDifference.y;
         }
     }
 }

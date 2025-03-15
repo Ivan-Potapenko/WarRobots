@@ -14,6 +14,14 @@ namespace Game {
         private Transform _shootPoint;
         public Transform ShootPoint => _shootPoint;
 
+        [SerializeField]
+        private float _aiShootDistance;
+        public float AIShootDistance => _aiShootDistance;
+
+        [SerializeField]
+        private float _cameraHightModifier = 1;
+        public float CameraHightModifier => _cameraHightModifier;
+
         private float _currenTimeBeforeShoot;
 
         private Character _owner;

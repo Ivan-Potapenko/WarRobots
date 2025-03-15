@@ -12,6 +12,7 @@ namespace Game {
         private float _aimSpeed;
 
         private AbstractWeapon _weapon;
+        public AbstractWeapon Weapon => _weapon;
 
         private WeaponData _weaponData;
 

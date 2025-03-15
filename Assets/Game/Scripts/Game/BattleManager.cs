@@ -31,8 +31,13 @@ namespace Game {
         [SerializeField]
         private bool _disableBots;
 
+        [SerializeField]
+        private BattleRoyaleGameLogic _gameLogic;
+        public BattleRoyaleGameLogic GameLogic => _gameLogic;
+
         public void Awake() {
             instance = this;
+            GameLogic.Init();
             foreach (var spawnPoint in _spawnPoints) {
                 var character = Instantiate(_characterPrefab, spawnPoint.position, spawnPoint.rotation, transform);
                 character.gameObject.name = $"Bot_{_characters.Count.ToString()}";
@@ -66,6 +71,7 @@ namespace Game {
             if (Input.GetKeyDown(KeyCode.R)) {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
+            _gameLogic.UpdateLogic();
         }
     }
 }

@@ -49,12 +49,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df6a4eca64423b428b19378520bc82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 35
+  _damage: 20
   _speed: 20
   _destroyEffect: {fileID: 1828176872806910, guid: 24c44ee4796fb724498efbc3842b8342,
     type: 3}
+  _lifetime: 1.2
   homingStrength: 10
-  _lifetime: 2
 --- !u!65 &8501457381227229739
 BoxCollider:
   m_ObjectHideFlags: 0

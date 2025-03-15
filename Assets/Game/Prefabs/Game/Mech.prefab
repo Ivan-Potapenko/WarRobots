@@ -882,6 +882,10 @@ MonoBehaviour:
   _updateTargetTick: 2
   _stopDistance: 1
   _speed: 20
+  _aIActions:
+  - {fileID: 11400000, guid: f0d449467f9c4e34ea14f2723e59ae7c, type: 2}
+  - {fileID: 11400000, guid: e117297642e24064ea57ab04a218eb25, type: 2}
+  _timeToChangeMoveVector: 1
 --- !u!114 &743913813727279143
 MonoBehaviour:
   m_ObjectHideFlags: 0

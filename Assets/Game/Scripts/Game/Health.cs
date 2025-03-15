@@ -53,7 +53,7 @@ namespace Game {
         }
 
         public void DoDamage(Damage damage) {
-            if (damage.value < 0) {
+            if (CurrentState == State.Death || damage.value <= 0) {
                 return;
             }
             _value = Mathf.Max(0, _value - damage.value);

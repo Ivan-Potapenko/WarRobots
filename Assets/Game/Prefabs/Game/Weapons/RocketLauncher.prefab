@@ -50,6 +50,7 @@ MonoBehaviour:
   _timeBetweenShoot: 0.35
   _muzzleFlash: {fileID: 3349624604774992904}
   _shootPoint: {fileID: 145522530034019047}
+  _aiShootDistance: 15
   _abstractProjectilePrefab: {fileID: 7979082092250490476, guid: c765c3b520ef580499e191446f3cb65c,
     type: 3}
 --- !u!1 &2431657935120713855
